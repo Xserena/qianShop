@@ -108,5 +108,5 @@ export default new Router({
       redirect:"/home"
     }
   ],
-  mode:"history"
+  // mode:"history"
 })
