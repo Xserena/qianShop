@@ -1,11 +1,11 @@
 <template>
 	<div class="container">
 		<div class="row">
-			<div class="col-md-3">	
+			<div class="col-md-3 col-lg-3">	
 			</div>
-			<div class="col-md-6">
+			<div class="col-md-6 col-lg-6">
 				<div class="bs-component">
-					<form>
+					<form @submit.prevent='onSubmit'>   <!-- 提交事件不再重载页面 -->
 						<fieldset>
 							<legend>注册</legend>
 							<div class="form-group">
@@ -21,7 +21,7 @@
 								<input type="password" name="" class="form-control" id='exampleInputPassword1' placeholder="请确认密码"  v-model='checkPass'>
 							</div>
 						</fieldset>
-						<input type="submit" name=""  @click='getInfo' value="注册" class="btn btn-success"/>
+						<input type="submit" name="" value="注册" class="btn btn-success"/>
 						<p class="sign">已有账号，去<router-link :to="{name:'sign'}" class='toSign'>登录</router-link> </p>
 					</form>
 				</div>
@@ -39,7 +39,7 @@
 			}
 		},
 		methods:{
-			getInfo:function () {
+			onSubmit:function () {
 				if (this.name!='' && this.pass!='' && this.checkPass==this.pass) {
 					
 					if(!window.localStorage){
@@ -47,6 +47,7 @@
                     }else{
                         sessionStorage.setItem('userInfo',this.name);
                         sessionStorage.setItem('passInfo',this.pass);
+                        this.$router.push({name:"sign"})
                     }
 				}else{
 					alert("请填写完整或确认密码是否正确")

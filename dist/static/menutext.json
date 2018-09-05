@@ -4,7 +4,7 @@
 			"id":1,
 			"name":"吉士汉堡包",
 			"price":12.00,
-			"url":"../../../../static/img/han1.png",
+			"url":"https://xserena.github.io/qianShop/static/img/han1.png",
 			"shopNumber":0,
 		},
 		{
@@ -76,7 +76,7 @@
 			"id":5,
 			"name":"麦乐鸡 (5块)",
 			"price":16.00,
-			"url":"../../../../static../../../../static/img/snack5.png",
+			"url":"../../../../static/img/snack5.png",
 			"shopNumber":0,
 		}
 	],

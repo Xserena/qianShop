@@ -1,9 +1,9 @@
 <template>
 	<div class="container">
 		<div class="row">
-			<div class="col-md-3">	
+			<div class="col-md-3 col-lg-3">	
 			</div>
-			<div class="col-md-6">
+			<div class="col-md-6 col-lg-6">
 				<div class="bs-component">
 					<form>
 						<fieldset>
@@ -33,21 +33,28 @@
 				pass:"",
 			}
 		},
+		//组件内守卫
+		beforeRouteEnter:(to,from,next)=>{
+			next(vm=>vm.$store.dispatch('setUser',null))
+		},
 		methods:{
 			getInfo:function () {
 				let userInfo=sessionStorage.getItem("userInfo");
 				let passInfo=sessionStorage.getItem("passInfo");
 				if (this.name!='' && this.pass!='') {
 					if (this.name==userInfo && this.pass==passInfo) {
-						alert("您好，"+this.name);
+						this.$store.dispatch('setUser',userInfo);
 						this.name='';
 						this.pass='';
 						this.$router.replace('/person')
 					}else{
 						alert("用户名或密码不正确");
+						this.$store.dispatch('setUser',null);
 					}
 				}else{
 					alert("请填写完整");
+					this.$store.dispatch('setUser',null);
+
 				}
 				
 			},
